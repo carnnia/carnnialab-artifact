@@ -1,0 +1,9 @@
+name: 'EVO Press Release'
+type: module
+description: 'Provides periodical content displayed chronologically.'
+core: 8.x
+package: '-- Evo --'
+dependencies:
+    - evo_shared
+    - evo_congress_number
+    - evo_issue

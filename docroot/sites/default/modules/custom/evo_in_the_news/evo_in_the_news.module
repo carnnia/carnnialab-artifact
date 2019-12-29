@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_in_the_news.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function evo_in_the_news_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_in_the_news module.
+    case 'help.page.evo_in_the_news':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides structure to record what news media has published about this site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

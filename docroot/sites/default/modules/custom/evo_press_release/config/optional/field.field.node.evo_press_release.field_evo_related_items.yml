@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_related_items
+    - node.type.evo_press_release
+    - node.type.evo_issue
+id: node.evo_press_release.field_evo_related_items
+field_name: field_evo_related_items
+entity_type: node
+bundle: evo_press_release
+label: 'Related Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      evo_press_release: evo_press_release
+      evo_issue: evo_issue
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: evo_press_release
+field_type: entity_reference

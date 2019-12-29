@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.evo_issue.body
+    - field.field.node.evo_issue.field_evo_issues
+    - node.type.evo_issue
+  module:
+    - text
+    - user
+id: node.evo_issue.default
+targetEntityType: node
+bundle: evo_issue
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_evo_issues: true

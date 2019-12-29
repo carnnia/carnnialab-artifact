@@ -1,0 +1,21 @@
+uuid: 018228e9-1419-4a0f-99eb-99231140f30b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_byline
+    - node.type.evo_in_the_news
+  module:
+    - text
+id: node.evo_in_the_news.field_evo_byline
+field_name: field_evo_byline
+entity_type: node
+bundle: evo_in_the_news
+label: Byline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

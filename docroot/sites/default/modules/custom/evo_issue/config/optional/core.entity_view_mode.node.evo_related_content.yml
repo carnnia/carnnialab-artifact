@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.evo_related_content
+label: 'Related Content'
+targetEntityType: node
+cache: true

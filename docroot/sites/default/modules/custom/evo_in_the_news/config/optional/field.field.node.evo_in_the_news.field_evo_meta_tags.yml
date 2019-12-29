@@ -1,0 +1,21 @@
+uuid: 783063c5-4590-498b-a7b3-e8a19fe3c236
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_meta_tags
+    - node.type.evo_in_the_news
+  module:
+    - metatag
+id: node.evo_in_the_news.field_evo_meta_tags
+field_name: field_evo_meta_tags
+entity_type: node
+bundle: evo_in_the_news
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

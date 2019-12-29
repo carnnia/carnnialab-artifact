@@ -1,0 +1,5 @@
+name: 'Evo Congress Number'
+type: module
+description: 'Provides functionality for tagging content with a number of Congress, such as 113th Congress.'
+core: 8.x
+package: '-- Evo --'

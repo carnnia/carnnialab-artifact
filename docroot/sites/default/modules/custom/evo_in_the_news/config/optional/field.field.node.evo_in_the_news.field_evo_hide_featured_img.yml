@@ -1,0 +1,23 @@
+uuid: d3ebef61-9824-47e4-880c-fe2711bc56a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_hide_featured_img
+    - node.type.evo_in_the_news
+id: node.evo_in_the_news.field_evo_hide_featured_img
+field_name: field_evo_hide_featured_img
+entity_type: node
+bundle: evo_in_the_news
+label: 'Hide Featured Image'
+description: 'Do not display the featured image on the full page display. The featured image will still be used on the homepage if needed.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_evo_congress_integer
+    - taxonomy.vocabulary.evo_congress_number
+id: taxonomy_term.evo_congress_number.field_evo_congress_integer
+field_name: field_evo_congress_integer
+entity_type: taxonomy_term
+bundle: evo_congress_number
+label: Number
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

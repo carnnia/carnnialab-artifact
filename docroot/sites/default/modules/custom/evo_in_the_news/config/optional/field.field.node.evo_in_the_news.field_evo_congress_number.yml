@@ -1,0 +1,29 @@
+uuid: bc9a6194-664c-4125-9271-a1268398ffa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_congress_number
+    - node.type.evo_in_the_news
+    - taxonomy.vocabulary.evo_congress_number
+id: node.evo_in_the_news.field_evo_congress_number
+field_name: field_evo_congress_number
+entity_type: node
+bundle: evo_in_the_news
+label: 'Congress Number'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      evo_congress_number: evo_congress_number
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

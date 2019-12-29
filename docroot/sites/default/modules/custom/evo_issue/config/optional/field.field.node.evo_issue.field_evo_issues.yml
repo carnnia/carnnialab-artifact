@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_issues
+    - node.type.evo_issue
+    - taxonomy.vocabulary.evo_issue
+id: node.evo_issue.field_evo_issues
+field_name: field_evo_issues
+entity_type: node
+bundle: evo_issue
+label: Issues
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      evo_issue: evo_issue
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

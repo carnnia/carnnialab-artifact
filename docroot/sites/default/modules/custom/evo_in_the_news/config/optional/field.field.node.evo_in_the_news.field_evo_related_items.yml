@@ -1,0 +1,27 @@
+uuid: f393f644-6863-4eda-8df0-5e7cc010bcdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_related_items
+    - node.type.evo_in_the_news
+id: node.evo_in_the_news.field_evo_related_items
+field_name: field_evo_related_items
+entity_type: node
+bundle: evo_in_the_news
+label: 'Related Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      evo_in_the_news: evo_in_the_news
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

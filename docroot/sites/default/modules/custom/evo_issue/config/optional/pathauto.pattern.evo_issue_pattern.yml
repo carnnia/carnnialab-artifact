@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: evo_issue_pattern
+label: 'Evo Issue Pattern'
+type: 'canonical_entities:node'
+pattern: 'issues/[node:title]'
+selection_criteria:
+  758f6866-0b01-499b-a7fe-75476cad8eff:
+    id: node_type
+    bundles:
+      evo_issue: evo_issue
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 758f6866-0b01-499b-a7fe-75476cad8eff
+selection_logic: and
+weight: -5
+relationships: {  }

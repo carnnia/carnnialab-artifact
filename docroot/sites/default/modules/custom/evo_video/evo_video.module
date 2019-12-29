@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_video.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function evo_video_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_video module.
+    case 'help.page.evo_video':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides content you can embed a video in.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+

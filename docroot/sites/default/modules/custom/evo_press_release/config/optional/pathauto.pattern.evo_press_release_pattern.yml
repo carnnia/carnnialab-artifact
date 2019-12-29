@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: evo_press_release_pattern
+label: 'Evo Press Release Pattern'
+type: 'canonical_entities:node'
+pattern: '/media/press-releases/[node:title]'
+selection_criteria:
+  26e4592e-ef43-4882-a6b4-1e4feeaa8119:
+    id: node_type
+    bundles:
+      evo_press_release: evo_press_release
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 26e4592e-ef43-4882-a6b4-1e4feeaa8119
+selection_logic: and
+weight: -5
+relationships: {  }

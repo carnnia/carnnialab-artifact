@@ -1,0 +1,9 @@
+name: 'EVO Video'
+type: module
+description: 'Provides content you can embed a video in.'
+core: 8.x
+package: '-- Evo --'
+dependencies:
+    - evo_shared
+    - evo_congress_number
+    - evo_issue

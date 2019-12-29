@@ -1,0 +1,17 @@
+uuid: 77d4fa31-9f0d-4b3d-9c65-081cd7f0dc3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'In The News'
+type: evo_in_the_news
+description: 'Provides structure to record what news media has published about this site.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

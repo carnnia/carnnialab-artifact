@@ -1,0 +1,22 @@
+uuid: 11f4190a-04a1-4532-ac69-c6c90d204e67
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: evo_in_the_news_pattern
+label: 'Evo In The News Pattern'
+type: 'canonical_entities:node'
+pattern: 'media/in-the-news/[node:title]'
+selection_criteria:
+  4217b22e-723b-4cc0-8db1-1036b9e4ad85:
+    id: node_type
+    bundles:
+      evo_in_the_news: evo_in_the_news
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 4217b22e-723b-4cc0-8db1-1036b9e4ad85
+selection_logic: and
+weight: -5
+relationships: {  }

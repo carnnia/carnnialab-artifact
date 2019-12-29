@@ -1,0 +1,7 @@
+name: 'Evo Shared'
+type: module
+description: 'Shared components across features such as field bases'
+core: 8.x
+package: '-- Evo --'
+dependencies:
+  - menu_ui

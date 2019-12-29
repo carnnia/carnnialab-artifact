@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_meta_tags
+    - node.type.evo_video
+  module:
+    - metatag
+id: node.evo_video.field_evo_meta_tags
+field_name: field_evo_meta_tags
+entity_type: node
+bundle: evo_video
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

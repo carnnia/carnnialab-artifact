@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_issue.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+/**
+ * Implements hook_help().
+ */
+function evo_issue_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_issue module.
+    case 'help.page.evo_issue':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides functionality for tagging content with issues, such as Economy, Education. Also adds a Issue content type') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function evo_issue_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  if($entity->bundle() == 'evo_issue' && $entity->getEntityType()->id() == 'node') {
+
+    //Check if the term exists
+    $vid = 'evo_issue';
+    $terms = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadByProperties(['name' => $entity->get('title')->value]);
+    
+   if(empty($terms) && !$entity->isNew() 
+        && ($entity->original->get('title')->value != $entity->get('title')->value)){
+        // Edit the taxonomy term if the Title has changed
+        $update_terms = \Drupal::entityTypeManager()
+            ->getStorage('taxonomy_term')
+            ->loadByProperties(['name' => $entity->original->get('title')->value]);
+        $term = reset($update_terms);
+        $term->setName($entity->get('title')->value);
+        $term->save(); 
+        
+    } elseif(empty($terms)) {
+        // Add a new term is not available and entity is new
+        $term = Term::create([
+          'name' => $entity->get('title')->value,
+          'vid' => $vid,
+        ]);
+        $term->save();
+        
+    } else{
+        $term = reset($terms); // get the first element of the array
+        
+    }
+    
+    $tid = $term->id();
+    $entity->set('field_evo_issues', array($tid));//set value for field
+  }
+}
+
+

@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_congress_number.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function evo_congress_number_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_congress_number module.
+    case 'help.page.evo_congress_number':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Congress Number logic') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function evo_congress_number_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  $nodeBundle = $node->bundle();
+  if (($form_state->getFormObject()->getOperation() == 'default'
+      || $form_state->getFormObject()->getOperation() == 'edit')
+    && isset($form['field_evo_congress_number'])) {
+    $form['field_evo_congress_number']['widget']['#options']['_none'] = t('Calculate automatically');
+  }
+}
+
+
+/**
+ * Implements hook_presave()
+ */
+
+function evo_congress_number_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityType()->id() == 'node' && $entity->hasField('field_evo_congress_number') && empty($entity->field_evo_congress_number['und'][0]['tid'])) {
+      
+    $tid = _evo_congress_number_load_congress_number(_evo_congress_number_default_congress($entity->get('created')->value), TRUE);
+
+    if ($tid) {
+      $entity->set('field_evo_congress_number', ['target_id' => $tid]);
+    } else {
+      drupal_set_message('The session of congress for this field was unable to be set automatically.', 'warning');
+    }
+  }
+}
+
+/**
+ * Given a timestamp, return the congress that it falls in
+ * @returns congress number or false
+ */
+function _evo_congress_number_default_congress($author_date = NULL) {
+  if ($author_date == NULL) {
+    $author_date = time();
+  }
+  $year = date('Y', $author_date);
+  
+  // Account for Jan 1/2 to be part of Last Congress
+  $congress_start_year = ($year % 2) ? $year : ($year-1);
+  $cutoff_date = strtotime("3rd January ". $congress_start_year);
+  if( ($author_date - $cutoff_date) < 1 ) {
+      $year = $year - 1;
+  }
+  
+  return intval(floor(($year - 1787) / 2));
+}
+
+function _evo_congress_number_load_congress_number($congress, $create = FALSE) {
+  $vocab_vid = 'evo_congress_number';
+  $vocab = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->loadByProperties(['vid' => $vocab_vid]);
+  $term = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadByProperties(['vid' => $vocab_vid, 'field_evo_congress_integer' => $congress]);
+
+  if (!empty($term) && count($term) == 1) {
+    return key($term);
+  }
+  if ($create) {
+    return _evo_congress_number_create_congress_number($congress, TRUE);
+  } else {
+    return FALSE;
+  }
+
+}
+
+/**
+ *  Create the new term for the congress number vocabulary
+ */
+function _evo_congress_number_create_congress_number($number) {
+  if (_evo_congress_number_load_congress_number($number)) {
+    watchdog_exception('evo_congress_number', "can't create a number that already exits", NULL, WATCHDOG_ERROR);
+  }
+
+  $vocab_vid = 'evo_congress_number';
+  $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+  if (($number % 100) >= 11 && ($number % 100) <= 13)
+    $abbreviation = $number . 'th';
+  else
+    $abbreviation = $number . $ends[$number % 10];
+
+  $term = Term::create([
+    'name' => $abbreviation." Congress",
+    'vid' => $vocab_vid,
+    'field_evo_congress_integer' => $number,
+  ]);
+  
+  // Makes sure this creates a new term
+  $term->enforceIsNew();
+  $term->save();
+  
+  return $term->tid->value;
+}
+

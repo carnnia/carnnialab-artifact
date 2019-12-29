@@ -1,0 +1,22 @@
+uuid: cd9d18e8-3706-4391-9254-6ea9f2577a3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.evo_in_the_news
+  module:
+    - text
+id: node.evo_in_the_news.body
+field_name: body
+entity_type: node
+bundle: evo_in_the_news
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

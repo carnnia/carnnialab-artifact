@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_press_release.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function evo_press_release_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_press_release module.
+    case 'help.page.evo_press_release':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides periodical content displayed chronologically.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+

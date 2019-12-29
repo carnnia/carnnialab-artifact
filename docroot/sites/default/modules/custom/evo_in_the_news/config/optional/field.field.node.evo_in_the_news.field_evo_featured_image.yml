@@ -1,0 +1,38 @@
+uuid: 0079c74f-55fa-417d-a33b-40de815aec56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_featured_image
+    - node.type.evo_in_the_news
+  module:
+    - image
+id: node.evo_in_the_news.field_evo_featured_image
+field_name: field_evo_featured_image
+entity_type: node
+bundle: evo_in_the_news
+label: 'Featured Image'
+description: 'Override the default featured image for this node by uploading a new one or choosing one from image library.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: featured_image
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

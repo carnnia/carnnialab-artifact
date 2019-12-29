@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_hide_featured_img
+    - node.type.evo_article
+id: node.evo_article.field_evo_hide_featured_img
+field_name: field_evo_hide_featured_img
+entity_type: node
+bundle: evo_article
+label: 'Hide Featured Image'
+description: 'Do not display the featured image on the full page display. The feature image will still be used on the home page and as the default image when sharing content on Facebook.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

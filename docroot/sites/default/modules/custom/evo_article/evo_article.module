@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains evo_article.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function evo_article_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evo_article module.
+    case 'help.page.evo_article':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides flexible content type for creation of branded content, such as Speeches or Editorials.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function evo_article_install(){
+  $vocab = 'evo_article_type';
+  // Term names to be added.
+  $items[0] = array(
+      'name' => 'Blog Post',
+      'path' => '/media/blog-posts',
+  );
+  $items[1] = array(
+      'name' => 'Speech',
+      'path' => '/media/speeches',
+  );
+  $items[2] = array(
+      'name' => 'Editorial',
+      'path' => '/media/editorials',
+  );
+     
+  foreach ($items as $item) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $item['name'],
+      'vid' => $vocab,
+      'path' => [
+        'alias' => $item['path'],
+      ]
+    ))->save();
+   
+  }
+}

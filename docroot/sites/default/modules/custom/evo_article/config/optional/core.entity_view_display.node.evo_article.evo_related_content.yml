@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.evo_related_content
+    - field.field.node.evo_article.body
+    - field.field.node.evo_article.field_evo_article_type
+    - field.field.node.evo_article.field_evo_congress_number
+    - field.field.node.evo_article.field_evo_featured_image
+    - field.field.node.evo_article.field_evo_hide_featured_img
+    - field.field.node.evo_article.field_evo_issues
+    - field.field.node.evo_article.field_evo_meta_tags
+    - field.field.node.evo_article.field_evo_related_items
+    - field.field.node.evo_article.field_evo_subtitle
+    - node.type.evo_article
+  module:
+    - user
+id: node.evo_article.evo_related_content
+targetEntityType: node
+bundle: evo_article
+mode: evo_related_content
+content: {  }
+hidden:
+  body: true
+  field_evo_article_type: true
+  field_evo_congress_number: true
+  field_evo_featured_image: true
+  field_evo_hide_featured_img: true
+  field_evo_issues: true
+  field_evo_meta_tags: true
+  field_evo_related_items: true
+  field_evo_subtitle: true
+  links: true

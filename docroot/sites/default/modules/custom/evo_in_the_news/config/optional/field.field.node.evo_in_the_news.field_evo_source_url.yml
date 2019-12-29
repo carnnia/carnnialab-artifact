@@ -1,0 +1,23 @@
+uuid: 27471ac5-f086-4fbd-819d-e98f1f98551e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_evo_source_url
+    - node.type.evo_in_the_news
+  module:
+    - link
+id: node.evo_in_the_news.field_evo_source_url
+field_name: field_evo_source_url
+entity_type: node
+bundle: evo_in_the_news
+label: 'Source URL'
+description: 'Name of the news organization, will be used as the text of hyperlink. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link

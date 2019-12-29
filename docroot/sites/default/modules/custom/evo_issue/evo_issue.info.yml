@@ -1,0 +1,8 @@
+name: 'EVO Issue'
+type: module
+description: 'Provides functionality for tagging content with issues, such as Economy, Education. Also adds a Issue content type'
+core: 8.x
+package: '-- Evo --'
+dependencies:
+  - menu_ui
+  - evo_shared

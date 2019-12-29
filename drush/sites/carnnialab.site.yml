@@ -1,0 +1,6 @@
+local:
+    root: /var/www/carnnialab/docroot
+    uri: 'http://local.carnnialab.com'
+    host: local.carnnialab.com
+    user: vagrant
+    ssh: { options: '-o StrictHostKeyChecking=no -o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key' }

@@ -1,0 +1,9 @@
+name: 'EVO Article'
+type: module
+description: 'Provides flexible content type for creation of branded content, such as Speeches or Editorials.'
+core: 8.x
+package: '-- Evo --'
+dependencies:
+    - evo_shared
+    - evo_congress_number
+    - evo_issue
